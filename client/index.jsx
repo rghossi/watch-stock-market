@@ -9,8 +9,13 @@ import io from 'socket.io-client';
 const PORT = process.env.PORT || 3000;
 const protocol = process.env.PROTOCOL || "http:";
 const hostname = process.env.HOSTNAME || "localhost";
+let url = `${protocol}//${hostname}`
 
-const socket = io(`${protocol}//${hostname}:${PORT}`);
+if (process.env.NODE_ENV !== "production"){
+	url += `:${PORT}`;
+}
+
+const socket = io(url);
 const store = configureStore(socket);
 
 socket.on('state', state =>
