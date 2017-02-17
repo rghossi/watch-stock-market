@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import reducer from './reducer';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import {AppContainer} from '../Client/components/app';
+import {AppContainer} from '../client/components/app';
 import configureStore from '../client/configureStore';
 
 const app = express();
