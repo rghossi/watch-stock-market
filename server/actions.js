@@ -1,7 +1,10 @@
+const today = new Date();
+const oneYearAgo = new Date(today).setFullYear(today.getFullYear() - 1);
+
 export const INITIAL_STATE = {
 	stockMarkets: [],
-	from: new Date(2016, 6, 7),
-	to: new Date()
+	from: oneYearAgo,
+	to: today
 };
 
 export const ADD_STOCK_MARKET = 'ADD_STOCK_MARKET';
