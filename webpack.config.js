@@ -18,5 +18,12 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     filename: 'bundle.js'
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.PORT': JSON.stringify(process.env.PORT),
+      'process.env.PROTOCOL': JSON.stringify(process.env.PROTOCOL),
+      'process.env.HOSTNAME': JSON.stringify(process.env.HOSTNAME)
+    })
+  ]
 };
