@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/babel-node --presets 'es2015,react' server/app.js",
-    "dev": "NODE_ENV=dev BABEL_DISABLE_CACHE=1 npm start"
+    "dev": "NODE_ENV=dev BABEL_DISABLE_CACHE=1 npm start",
+    "build": "node_modules/.bin/webpack -p",
+    "build:watch": "node_modules/.bin/webpack -p --watch"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rghossi/watch-stock-market/issues"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "homepage": "https://github.com/rghossi/watch-stock-market#readme",
   "dependencies": {
@@ -28,5 +36,9 @@
     "react-dom": "^15.4.2",
     "redux": "^3.6.0",
     "socket.io": "^1.7.3"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.3.2",
+    "webpack": "^2.2.1"
   }
 }

@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   socket.on('action', store.dispatch.bind(store));
 });
 
+app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
