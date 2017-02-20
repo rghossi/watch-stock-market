@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
 import MyNavbar from './navbar';
+import MyFooter from './footer';
 
 class App extends Component {
 	render() {
@@ -9,6 +10,7 @@ class App extends Component {
 			<div>
 				<MyNavbar />
 				<h1>Hello world!</h1>
+				<MyFooter />
 			</div>
 		);
 	}
