@@ -25,7 +25,8 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.PORT': JSON.stringify(process.env.PORT),
       'process.env.PROTOCOL': JSON.stringify(process.env.PROTOCOL),
-      'process.env.HOSTNAME': JSON.stringify(process.env.HOSTNAME)
+      'process.env.HOSTNAME': JSON.stringify(process.env.HOSTNAME),
+      'process.env.BROWSER': JSON.stringify(true)
     })
   ]
 };

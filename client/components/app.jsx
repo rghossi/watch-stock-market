@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import MyNavbar from './navbar';
 import MyFooter from './footer';
 import MyChart from './myChart';
+import NewStockForm from './newStockForm';
 import { Grid } from 'react-bootstrap';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
 				<MyNavbar />
 				<Grid>
 					<MyChart />
+					<NewStockForm />
 				</Grid>
 				<MyFooter />
 			</div>

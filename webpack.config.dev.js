@@ -14,7 +14,10 @@ module.exports = {
 		publicPath: '/'
 	},
 	plugins : [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.DefinePlugin({
+      'process.env.BROWSER': JSON.stringify(true)
+    })
 	],
 	resolve: {
 	    extensions: ['.js', '.jsx']

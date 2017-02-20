@@ -1,20 +1,38 @@
 import React, { Component, PropTypes } from 'react';
-import { line as LineChart } from 'zingchart-react';
+import {Line} from 'react-chartjs-2';
 
 export default class MyChart extends Component {
   render() {
-    const myLineValues = [
-      { text : "First Series", values : [0,1,2,2,4,6,7] },
-      { text : "Second Series", values : [18,12,7,14,1,19,4] },
-      { text : "Third Series", values : [0,1,12,12,4,6,17] },
-      { text : "Fourth Series", values : [18,22,17,4,1,9,4] },
-      { text : "Fifth Series", values : [4,2,7,3,23,7,2] },
-      { text : "Sixth Series", values : [10,6,8,2,6,3,9] },
-    ];
+    const data = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label: 'My First dataset',
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: 'rgba(75,192,192,0.4)',
+          borderColor: 'rgba(75,192,192,1)',
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: 'rgba(75,192,192,1)',
+          pointBackgroundColor: '#fff',
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+          pointHoverBorderColor: 'rgba(220,220,220,1)',
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [65, 59, 80, 81, 56, 55, 40]
+        }
+      ]
+    };
 
     return (
       <div>
-        <LineChart id="chart1" height="300" width="100%" series={myLineValues} legend="true" theme="light" title="Hello Line Chart"/>
+        <Line data={data} />
       </div>
     );
   }
