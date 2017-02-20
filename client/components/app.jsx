@@ -3,13 +3,17 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 import MyNavbar from './navbar';
 import MyFooter from './footer';
+import MyChart from './myChart';
+import { Grid } from 'react-bootstrap';
 
 class App extends Component {
 	render() {
 		return (
 			<div>
 				<MyNavbar />
-				<h1>Hello world!</h1>
+				<Grid>
+					<MyChart />
+				</Grid>
 				<MyFooter />
 			</div>
 		);
