@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Grid, FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { addStockMarket } from '../actions';
+import { connect } from 'react-redux';
 
-export default class NewStockForm extends Component {
+class NewStockForm extends Component {
   constructor(props) {
     super(props);
     this.addNewStock = this.addNewStock.bind(this);
@@ -9,9 +11,19 @@ export default class NewStockForm extends Component {
 
   addNewStock(e) {
     e.preventDefault();
-    const { dispatch } = this.props
+    const { dispatch } = this.props;
     const stockCode = this.input.value;
-    console.log(stockCode);
+    fetch("/api/isValidCode/" + this.input.value, {credentials: 'same-origin'})
+      .then(response => response.json())
+      .then(json => {
+        if (json.valid) {
+          dispatch(addStockMarket(stockCode));
+        } else {
+          alert("Invalid stock code!");
+        }
+        this.input.value = '';
+      })
+    
   }
 
   render() {
@@ -29,3 +41,5 @@ export default class NewStockForm extends Component {
     );
   }
 }
+
+export default connect()(NewStockForm);

@@ -29,12 +29,17 @@ class App extends Component {
 		this.getStockmarkets();
 	}
 
+	componentDidUpdate() {
+		this.getStockmarkets();
+	}
+
 	render() {
 		return (
 			<div>
 				<MyNavbar />
 				<Grid>
-					<NewStockForm />
+					Syncs in realtime across clients
+					<NewStockForm/>
 					<Row>
 						<MyChart datasets={this.state.datasets}/>
 					</Row>

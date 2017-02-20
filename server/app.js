@@ -30,6 +30,18 @@ app.use(express.static('dist'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.get('/api/isValidCode/:code', function(req, res) {
+	const code = req.params.code;
+	yahooFinance.historical({
+		symbol: code,
+		from: '2016-01-01',
+		to: '2017-01-01'
+	}, function(err, result){
+		if (err || result.length < 1) res.json({valid: false});
+		else res.json({valid: true});
+	})
+})
+
 app.get('/api/stockmarkets', function(req, res) {
 	let stocks = store.getState().stockMarkets;
 	if (stocks.length < 1) {
