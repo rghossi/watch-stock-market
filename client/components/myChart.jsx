@@ -4,7 +4,6 @@ import {Line} from 'react-chartjs-2';
 export default class MyChart extends Component {
   render() {
     const data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
           label: 'My First dataset',
@@ -25,14 +24,40 @@ export default class MyChart extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40]
+          data: [{
+            x: new Date(2016, 10, 10),
+            y: 10
+          },{
+            x: new Date(2016, 11, 10),
+            y: 15
+          },{
+            x: new Date(2016, 12, 10),
+            y: 20
+          },{
+            x: new Date(2017, 1, 10),
+            y: 15
+          },{
+            x: new Date(2017, 2, 10),
+            y: 25
+          }]
         }
       ]
     };
 
+    const options = {
+      scales: {
+        xAxes: [{
+          type: 'time',
+          time: {
+            unit: 'month'
+          }
+        }]
+      }
+    }
+
     return (
       <div>
-        <Line data={data} />
+        <Line data={data} options={options}/>
       </div>
     );
   }
