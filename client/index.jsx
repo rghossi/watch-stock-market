@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from './configureStore';
 import {setState} from './actions';
 import io from 'socket.io-client';
+require('./static/style.css');
 
 const PORT = process.env.PORT || 3000;
 const protocol = process.env.PROTOCOL || "http:";
