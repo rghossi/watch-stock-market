@@ -41,7 +41,9 @@
     "redux": "^3.6.0",
     "socket.io": "^1.7.3",
     "style-loader": "^0.13.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "zingchart": "^2.5.2",
+    "zingchart-react": "^1.0.5"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
