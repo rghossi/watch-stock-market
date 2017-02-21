@@ -28,15 +28,20 @@ class App extends Component {
 	}
 
 	removeStock(stock) {
-		console.log(stock);
+		const { dispatch } = this.props;
+		dispatch(actions.removeStockMarket(stock));
 	}
 
 	componentDidMount() {
 		this.getStockmarkets();
 	}
 
-	componentDidUpdate() {
-		this.getStockmarkets();
+	componentDidUpdate(prevProps) {
+		const a1 = prevProps.stockMarkets;
+		const a2 = this.props.stockMarkets;
+		if (a1 && a2 && !(a1.length === a2.length && a1.every((v,i)=> v === a2[i]))){
+			this.getStockmarkets();
+		}
 	}
 
 	render() {
@@ -71,6 +76,5 @@ function mapStateToProps(state) {
 }
 
 export const AppContainer = connect(
-  mapStateToProps,
-  actions
+  mapStateToProps
 )(App);
