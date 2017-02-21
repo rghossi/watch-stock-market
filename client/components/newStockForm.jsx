@@ -33,7 +33,7 @@ class NewStockForm extends Component {
           <InputGroup>
             <FormControl inputRef={(input) => this.input = input} type="text" placeholder="Enter stock code" />
             <InputGroup.Button>
-              <Button type="submit">Add</Button>
+              <Button bsStyle="primary" type="submit">Add</Button>
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>

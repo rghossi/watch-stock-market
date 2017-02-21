@@ -5,7 +5,8 @@ import MyNavbar from './navbar';
 import MyFooter from './footer';
 import MyChart from './myChart';
 import NewStockForm from './newStockForm';
-import { Grid, Row } from 'react-bootstrap';
+import StockPreview from './stockPreview';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import fetch from 'isomorphic-fetch';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
 		this.state = {
 			datasets: []
 		}
+		this.removeStock = this.removeStock.bind(this);
 	}
 
 	getStockmarkets() {
@@ -25,6 +27,10 @@ class App extends Component {
 			})
 	}
 
+	removeStock(stock) {
+		console.log(stock);
+	}
+
 	componentDidMount() {
 		this.getStockmarkets();
 	}
@@ -34,12 +40,18 @@ class App extends Component {
 	}
 
 	render() {
+		let {stockMarkets} = this.props;
+		if (!stockMarkets) stockMarkets = []
 		return (
 			<div>
 				<MyNavbar />
 				<Grid>
 					Syncs in realtime across clients
-					<NewStockForm/>
+					<NewStockForm />
+					<Row>
+					{stockMarkets.map(stock => 
+						<StockPreview key={stock} stockMarket={stock} removeStock={this.removeStock} />)}
+					</Row>
 					<Row>
 						<MyChart datasets={this.state.datasets}/>
 					</Row>
