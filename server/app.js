@@ -37,7 +37,7 @@ app.get('/api/isValidCode/:code', function(req, res) {
 		from: '2016-01-01',
 		to: '2017-01-01'
 	}, function(err, result){
-		if (err || result.length < 1) res.json({valid: false});
+		if (err || result.length < 1 || store.getState().stockMarkets.indexOf(code) > -1) res.json({valid: false});
 		else res.json({valid: true});
 	})
 })
