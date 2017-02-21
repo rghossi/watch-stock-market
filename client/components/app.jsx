@@ -8,22 +8,25 @@ import NewStockForm from './newStockForm';
 import StockPreview from './stockPreview';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import fetch from 'isomorphic-fetch';
+import Loader from 'react-loader';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			datasets: []
+			datasets: [],
+			loaded: true
 		}
 		this.removeStock = this.removeStock.bind(this);
 	}
 
 	getStockmarkets() {
+		this.setState({loaded: false})
 		const {stockMarkets} = this.props;
 		fetch("/api/stockmarkets", {credentials: 'same-origin'})
       .then(response => response.json())
       .then(json => {
-			  this.setState({datasets: json.datasets});
+			  this.setState({datasets: json.datasets, loaded: true});
 			})
 	}
 
@@ -52,14 +55,16 @@ class App extends Component {
 				<MyNavbar />
 				<Grid>
 					Syncs in realtime across clients
-					<NewStockForm />
-					<Row>
-					{stockMarkets.map(stock => 
-						<StockPreview key={stock} stockMarket={stock} removeStock={this.removeStock} />)}
-					</Row>
-					<Row>
-						<MyChart datasets={this.state.datasets}/>
-					</Row>
+					<Loader loaded={this.state.loaded}>
+						<NewStockForm />
+						<Row>
+						{stockMarkets.map(stock => 
+							<StockPreview key={stock} stockMarket={stock} removeStock={this.removeStock} />)}
+						</Row>
+						<Row>
+							<MyChart datasets={this.state.datasets}/>
+						</Row>
+					</Loader>
 				</Grid>
 				<MyFooter />
 			</div>

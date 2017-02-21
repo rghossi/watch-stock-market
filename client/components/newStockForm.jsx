@@ -21,7 +21,7 @@ class NewStockForm extends Component {
         } else {
           alert("Invalid stock code!");
         }
-        this.input.value = '';
+        if (this.input) this.input.value = '';
       })
     
   }
